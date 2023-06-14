@@ -2,7 +2,7 @@
 
 ## Purpose
 
-If a Next.js app is deployed but the CMS is not yet live at the same moment, getStaticProps are skipped and revalidated later when the CMS is live. Default revalidation is `60`.
+If a Next.js app is deployed but the CMS is not yet live at the same moment while building, getStaticProps are skipped and revalidated later when the CMS is live. Default revalidation is `60`.
 
 ## Usage
 
@@ -17,9 +17,11 @@ export const getStaticProps = async () => {
 
 Instead of giving back `returned`, you can of course give back something of your own.
 
-skipGetStaticPropsOnBuild has following Props:
+skipGetStaticPropsOnBuild has the following Props:
 
-`{
+```ts
+{
   defaultProps?: any;
   revalidate?: number;
-}`
+}
+```
