@@ -6,7 +6,7 @@ If a Next.js app is deployed but the CMS is not yet live at the same moment, get
 
 ## Usage
 
-```
+```ts
 export const getStaticProps = async () => {
     const { skip, returned } = skipGetStaticPropsOnBuild()
     if(skip) return returned
