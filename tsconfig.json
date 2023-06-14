@@ -1,0 +1,14 @@
+{
+  "extends": "@neuvernetzung/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@cli/*": ["../cli/*"],
+      "@server/*": ["./server/*"]
+    },
+    "target": "esnext",
+    "incremental": false
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["dist", "node_modules"]
+}

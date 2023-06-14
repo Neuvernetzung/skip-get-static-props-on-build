@@ -1,0 +1,38 @@
+{
+  "name": "skip-get-static-props-on-build",
+  "version": "1.0.0",
+  "description": "Skips getStaticProps on the build process in Next.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "scripts": {
+    "lint": "eslint ./ --fix",
+    "clean": "rimraf dist",
+    "type-check": "tsc --noEmit",
+    "build": "npm run clean && tsup"
+  },
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "next": "^13"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.1",
+    "@neuvernetzung/eslint-config-custom": "^1.1.0",
+    "@neuvernetzung/tsconfig": "^1.0.0",
+    "@types/node": "^20.3.1",
+    "eslint": "^8.42.0",
+    "next": "^13.4.5",
+    "rimraf": "^5.0.1",
+    "tsup": "^6.7.0",
+    "typescript": "^5.1.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Neuvernetzung/design-system.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
