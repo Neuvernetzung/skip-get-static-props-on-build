@@ -22,8 +22,10 @@ This function wraps your `getStaticProps` logic and provides error handling for 
 import { protectStaticPropsOnBuild } from "skip-get-static-props-on-build";
 import type { GetStaticProps } from "next";
 
-export const getStaticProps: GetStaticProps<{ test: string }> = async () => {
-  const { skip, returned } = await protectStaticPropsOnBuild(() => {
+type Props = { test: string };
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const { skip, returned } = await protectStaticPropsOnBuild<Props>(() => {
     const test = "2";
 
     return { props: { test } };
@@ -42,8 +44,10 @@ Similar to `protectStaticPropsOnBuild`, this function wraps your `getStaticPaths
 import { protectStaticPathsOnBuild } from "skip-get-static-props-on-build";
 import type { GetStaticPaths } from "next";
 
-export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
-  const { skip, returned } = await protectStaticPathsOnBuild(() => {
+type Params = { id: string };
+
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+  const { skip, returned } = await protectStaticPathsOnBuild<Params>(() => {
     const paths = [{ params: { id: "1" } }];
 
     return { paths, fallback: "blocking" };
