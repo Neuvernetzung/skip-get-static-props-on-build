@@ -1,5 +1,11 @@
 # skip-get-static-props-on-build
 
+## 2.0.2
+
+### Patch Changes
+
+- 1873159: async hinzufügen #6
+
 ## 2.0.1
 
 ### Patch Changes
