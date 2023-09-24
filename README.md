@@ -23,7 +23,7 @@ import { protectStaticPropsOnBuild } from "skip-get-static-props-on-build";
 import type { GetStaticProps } from "next";
 
 export const getStaticProps: GetStaticProps<{ test: string }> = async () => {
-  const { skip, returned } = protectStaticPropsOnBuild(() => {
+  const { skip, returned } = await protectStaticPropsOnBuild(() => {
     const test = "2";
 
     return { props: { test } };
@@ -43,7 +43,7 @@ import { protectStaticPathsOnBuild } from "skip-get-static-props-on-build";
 import type { GetStaticPaths } from "next";
 
 export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
-  const { skip, returned } = protectStaticPathsOnBuild(() => {
+  const { skip, returned } = await protectStaticPathsOnBuild(() => {
     const paths = [{ params: { id: "1" } }];
 
     return { paths, fallback: "blocking" };

@@ -13,18 +13,19 @@ export const skipGetStaticPropsOnBuild =
     skip: process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD,
   });
 
-type ProtectStaticPropsOnBuildCallback<TProps> =
-  () => GetStaticPropsResult<TProps>;
+type ProtectStaticPropsOnBuildCallback<TProps> = () =>
+  | GetStaticPropsResult<TProps>
+  | Promise<GetStaticPropsResult<TProps>>;
 
 type ProtectGetStaticPropsOnBuildReturn<TProps> =
   | { skip: true; returned?: never }
   | { skip: false; returned: GetStaticPropsResult<TProps> };
 
-export const protectStaticPropsOnBuild = <TProps>(
+export const protectStaticPropsOnBuild = async <TProps>(
   callback: ProtectStaticPropsOnBuildCallback<TProps>
-): ProtectGetStaticPropsOnBuildReturn<TProps> => {
+): Promise<ProtectGetStaticPropsOnBuildReturn<TProps>> => {
   try {
-    const returned = callback();
+    const returned = await callback();
     return { skip: false, returned };
   } catch (err) {
     const { skip } = skipGetStaticPropsOnBuild();
@@ -37,18 +38,19 @@ export const protectStaticPropsOnBuild = <TProps>(
   }
 };
 
-type ProtectStaticPathsOnBuildCallback<TParams extends ParsedUrlQuery> =
-  () => GetStaticPathsResult<TParams>;
+type ProtectStaticPathsOnBuildCallback<TParams extends ParsedUrlQuery> = () =>
+  | GetStaticPathsResult<TParams>
+  | Promise<GetStaticPathsResult<TParams>>;
 
 type ProtectGetStaticPathsOnBuildReturn<TParams extends ParsedUrlQuery> =
   | { skip: true; returned?: never }
   | { skip: false; returned: GetStaticPathsResult<TParams> };
 
-export const protectStaticPathsOnBuild = <TParams extends ParsedUrlQuery>(
+export const protectStaticPathsOnBuild = async <TParams extends ParsedUrlQuery>(
   callback: ProtectStaticPathsOnBuildCallback<TParams>
-): ProtectGetStaticPathsOnBuildReturn<TParams> => {
+): Promise<ProtectGetStaticPathsOnBuildReturn<TParams>> => {
   try {
-    const returned = callback();
+    const returned = await callback();
     return { skip: false, returned };
   } catch (err) {
     const { skip } = skipGetStaticPropsOnBuild();

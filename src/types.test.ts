@@ -7,7 +7,7 @@ type Params = { id: string };
 export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
   const id = ctx.params?.id;
 
-  const { skip, returned } = protectStaticPropsOnBuild(() => {
+  const { skip, returned } = await protectStaticPropsOnBuild(() => {
     const test = String(id);
 
     return { props: { test } };
@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
 };
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const { skip, returned } = protectStaticPathsOnBuild(() => {
+  const { skip, returned } = await protectStaticPathsOnBuild(() => {
     const paths = [{ params: { id: "1" } }];
 
     return { paths, fallback: "blocking" };
@@ -37,7 +37,7 @@ export const getStaticPropsError: GetStaticProps<Props, Params> = async (
 ) => {
   const id = ctx.params?.id;
 
-  const { skip, returned } = protectStaticPropsOnBuild(() => {
+  const { skip, returned } = await protectStaticPropsOnBuild(() => {
     const test = Number(id);
 
     return { props: { test } };
@@ -50,7 +50,7 @@ export const getStaticPropsError: GetStaticProps<Props, Params> = async (
 // @ts-expect-error Ein Error soll hier passieren, da test kein String ist sondern eine Zahl
 export const getStaticPathsError: GetStaticPaths<Params> = async () => {
   // @ts-expect-error Ein Error soll hier passieren, da test kein String ist sondern eine Zahl
-  const { skip, returned } = protectStaticPathsOnBuild(() => {
+  const { skip, returned } = await protectStaticPathsOnBuild(() => {
     const paths = [{ params: { id: 1 } }];
 
     return { paths, fallback: "blocking" };
