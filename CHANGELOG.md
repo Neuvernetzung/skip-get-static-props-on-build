@@ -1,5 +1,11 @@
 # skip-get-static-props-on-build
 
+## 2.0.3
+
+### Patch Changes
+
+- 12df665: Readme und Tests anpassen #9
+
 ## 2.0.2
 
 ### Patch Changes
