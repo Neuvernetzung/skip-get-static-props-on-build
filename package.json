@@ -1,6 +1,6 @@
 {
   "name": "skip-get-static-props-on-build",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Skips getStaticProps on the build process in Next.js",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
