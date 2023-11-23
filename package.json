@@ -16,7 +16,7 @@
   "author": "Neuvernetzung Medienagentur",
   "license": "MIT",
   "peerDependencies": {
-    "next": "^13 | ^14"
+    "next": "^13 || ^14"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
