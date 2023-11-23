@@ -1,5 +1,11 @@
 # skip-get-static-props-on-build
 
+## 2.0.4
+
+### Patch Changes
+
+- d25c0b4: Next.js Peer v14 hinzufügen #13
+
 ## 2.0.3
 
 ### Patch Changes
