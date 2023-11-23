@@ -1,5 +1,11 @@
 # skip-get-static-props-on-build
 
+## 2.0.5
+
+### Patch Changes
+
+- d6a86c2: Peer deps anpassen #16
+
 ## 2.0.4
 
 ### Patch Changes
